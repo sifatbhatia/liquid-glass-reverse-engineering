@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sif Glass Component Gallery</title>
+    <link rel="stylesheet" href="./styles.css?v=6" />
+    <link rel="stylesheet" href="./gallery.css?v=7" />
+  </head>
+  <body class="galleryBody">
+    <div class="galleryBackdrop" aria-hidden="true"></div>
+
+    <aside class="galleryRail" aria-label="Section navigation">
+      <a class="galleryRailBack" href="./index.html" title="Back to navbar demo">←</a>
+      <nav class="galleryRailNav">
+        <a href="#section-navbar" data-jump="section-navbar" title="Navbar"><span>1</span></a>
+        <a href="#section-search" data-jump="section-search" title="Search"><span>2</span></a>
+        <a href="#section-switch" data-jump="section-switch" title="Switch"><span>3</span></a>
+        <a href="#section-slider" data-jump="section-slider" title="Slider"><span>4</span></a>
+        <a href="#section-chips" data-jump="section-chips" title="Chips"><span>5</span></a>
+        <a href="#section-fab" data-jump="section-fab" title="FAB"><span>6</span></a>
+      </nav>
+    </aside>
+
+    <div class="scrollRoot galleryScroll" id="scrollRoot">
+      <canvas id="sceneCanvas" class="sceneCanvas" aria-hidden="true"></canvas>
+
+      <section class="gallerySection gallerySection--hero" id="section-navbar" data-section="navbar">
+        <header class="componentHeader">
+          <p class="componentKicker">Built by Sif</p>
+          <h1>Liquid glass components, staged like a product.</h1>
+          <p class="componentDesc">Same refractive SVG displacement stack as the navbar demo, now shown against real photographic scenes instead of lab-pattern blocks.</p>
+          <div class="heroMeta" aria-label="Effect details">
+            <span>SVG displacement</span>
+            <span>scene-sampled refraction</span>
+            <span>dark adaptive tint</span>
+          </div>
+        </header>
+
+        <div class="componentLive componentLive--wide">
+          <div class="mediaFrame mediaFrame--hero">
+            <img src="https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=1800&q=82" alt="Concrete architecture with dramatic shadows" />
+            <span class="mediaTag">01 / Navigation</span>
+            <div class="galleryNavbar" id="galleryNavbar"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="gallerySection" id="section-search" data-section="search">
+        <header class="componentHeader">
+          <p class="componentIndex">02 / Search</p>
+          <h2>Command search over a cinematic image well.</h2>
+          <p class="componentDesc">The input stays crisp in the top layer while the lens below bends the same photographic scene that fills the card.</p>
+        </header>
+        <div class="componentLive">
+          <div class="mediaFrame">
+            <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1500&q=82" alt="Warm modern interior with natural light" />
+            <span class="mediaTag">Search scene</span>
+            <div class="floatingCard">
+              <span class="componentLabel">Library</span>
+              <div class="gallerySearch" id="gallerySearch"></div>
+              <div class="searchResults" id="searchResults" aria-live="polite"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="gallerySection" id="section-switch" data-section="switch">
+        <header class="componentHeader">
+          <p class="componentIndex">03 / Switch</p>
+          <h2>Settings that do not look like a default sample app.</h2>
+          <p class="componentDesc">The thumb uses the real glass stack and samples the scene behind the card, with restrained surrounding UI.</p>
+        </header>
+        <div class="componentLive">
+          <div class="mediaFrame">
+            <img src="https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=1500&q=82" alt="Moody night city skyline" />
+            <span class="mediaTag">Controls</span>
+            <div class="floatingCard">
+              <div class="settingsCard">
+                <div class="settingsRow">
+                  <div class="settingsIcon" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 3a5 5 0 0 1 5 5v1h1a3 3 0 0 1 3 3v6a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3v-6a3 3 0 0 1 3-3h1V8a5 5 0 0 1 5-5Z" stroke="currentColor" stroke-width="1.6"/></svg>
+                  </div>
+                  <div class="settingsCopy">
+                    <span class="settingsTitle">Scene-aware alerts</span>
+                    <span class="settingsSubtitle">Quiet tint, real refraction</span>
+                  </div>
+                  <div class="settingsControl">
+                    <div class="gallerySwitchTrack" id="switchTrack" role="switch" aria-checked="false" aria-label="Scene-aware alerts" tabindex="0">
+                      <div class="switchTrackFill" id="switchTrackFill" aria-hidden="true"></div>
+                      <div class="gallerySwitchThumb" id="switchThumb"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="settingsRow settingsRow--muted">
+                  <div class="settingsIcon" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h16M4 18h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                  </div>
+                  <div class="settingsCopy">
+                    <span class="settingsTitle">Summary digest</span>
+                    <span class="settingsSubtitle">Plain row for contrast</span>
+                  </div>
+                  <div class="settingsControl settingsControl--text" id="switchState">Off</div>
+                </div>
+              </div>
+              <div class="settingsPreview" id="alertsPreview">
+                <span>Alerts paused</span>
+                <strong>Quiet mode</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="gallerySection" id="section-slider" data-section="slider">
+        <header class="componentHeader">
+          <p class="componentIndex">04 / Slider</p>
+          <h2>A range control presented like media hardware.</h2>
+          <p class="componentDesc">Drag the puck across a polished surface. The handle refracts the scene under it, not a fake progress canvas.</p>
+        </header>
+        <div class="componentLive">
+          <div class="mediaFrame">
+            <img src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=1500&q=82" alt="Road through a desert landscape at sunset" />
+            <span class="mediaTag">Playback</span>
+            <div class="floatingCard">
+              <div class="sliderCard">
+                <div class="sliderCardHead">
+                  <span class="sliderCardTitle">Signal drift</span>
+                  <span class="gallerySliderValue" id="sliderValue">50%</span>
+                </div>
+                <div class="gallerySliderTrack" id="sliderTrack">
+                  <div class="gallerySliderRail" aria-hidden="true"></div>
+                  <div class="gallerySliderFill" id="sliderFill"></div>
+                  <div class="gallerySliderHandle" id="sliderHandle"></div>
+                </div>
+                <div class="sliderCardFoot">
+                  <span id="sliderTime">1:51</span>
+                  <span id="sliderMood">Balanced</span>
+                </div>
+                <div class="signalBars" id="signalBars" aria-hidden="true">
+                  <span></span><span></span><span></span><span></span><span></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="gallerySection" id="section-chips" data-section="chips">
+        <header class="componentHeader">
+          <p class="componentIndex">05 / Chips</p>
+          <h2>Filters that sit on top of the image, not outside it.</h2>
+          <p class="componentDesc">Each chip is a full glass instance with its own lens map, staged as an editorial control row.</p>
+        </header>
+        <div class="componentLive">
+          <div class="mediaFrame">
+            <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1500&q=82" alt="Dense green forest canopy" />
+            <span class="mediaTag">Filters</span>
+            <div class="floatingCard">
+              <div class="chipToolbar">
+                <span class="chipToolbarLabel">View</span>
+                <div class="galleryChips" id="galleryChips" role="group" aria-label="Filter tags"></div>
+                <button type="button" class="chipClear" id="chipClear">Clear</button>
+              </div>
+              <div class="filteredGrid" id="filteredGrid" aria-live="polite"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="gallerySection" id="section-fab" data-section="fab">
+        <header class="componentHeader">
+          <p class="componentIndex">06 / FAB</p>
+          <h2>A floating action button with a real circular lens.</h2>
+          <p class="componentDesc">The radial shape uses the same displacement generator with a circular radius, not a separate fake button style.</p>
+        </header>
+        <div class="componentLive componentLive--fab">
+          <div class="mediaFrame">
+            <img src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=1500&q=82" alt="Warm desert road and mountains" />
+            <span class="mediaTag">Create</span>
+            <div class="floatingCard">
+              <div class="fabScene">
+                <div class="fabRing" aria-hidden="true"></div>
+                <div class="galleryFab" id="galleryFab"></div>
+                <div class="fabCopy">
+                  <strong>Create by Sif</strong>
+                  <span>New glass component</span>
+                </div>
+              </div>
+              <div class="createdList" id="createdList" aria-live="polite"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <aside class="demoHud" id="demoHud">
+      <details class="debugPanel" id="debugPanel">
+        <summary>Debug tuning</summary>
+        <div class="debugControls">
+          <label class="debugCheck"><input type="checkbox" id="tintToggle" checked /> Dark tint</label>
+          <label class="debugCheck"><input type="checkbox" id="autoToggle" checked /> Auto tint</label>
+          <div class="galleryJumpSelect">
+            <select id="sectionJump" aria-label="Jump to section">
+              <option value="section-navbar">Navbar</option>
+              <option value="section-search">Search</option>
+              <option value="section-switch">Switch</option>
+              <option value="section-slider">Slider</option>
+              <option value="section-chips">Chips</option>
+              <option value="section-fab">FAB</option>
+            </select>
+          </div>
+          <div class="debugPresets" id="presetButtons">
+            <button type="button" data-preset="subtle">Subtle</button>
+            <button type="button" data-preset="balanced">Balanced</button>
+            <button type="button" data-preset="strong">Strong</button>
+          </div>
+          <div class="debugReadout" id="lumReadout">lum: -- -> tint --</div>
+        </div>
+        <div class="debugSliders" id="debugSliders"></div>
+      </details>
+      <p class="demoHudNote"><code>Glass gallery</code> by Sif. <a href="./index.html" style="color:rgba(255,255,255,0.9);pointer-events:auto">← Navbar demo</a></p>
+    </aside>
+
+    <script src="./generateLensMap.js?v=8"></script>
+    <script src="./generateSpecularMap.js?v=6"></script>
+    <script src="./autoTint.js?v=1"></script>
+    <script src="./glassPerf.js?v=1"></script>
+    <script src="./glassSvgFilter.js?v=9"></script>
+    <script src="./glassCore.js?v=4"></script>
+    <script src="./gallery.js?v=11"></script>
+  </body>
+</html>

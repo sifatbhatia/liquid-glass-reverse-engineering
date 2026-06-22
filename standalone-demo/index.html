@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sif — Liquid Glass Navbar</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.css" />
+    <link rel="stylesheet" href="./styles.css?v=16" />
+    <link rel="stylesheet" href="./index.css?v=10" />
+  </head>
+  <body class="demoBody">
+    <div class="demoBackdrop" aria-hidden="true"></div>
+
+    <div class="scrollRoot" id="scrollRoot">
+      <div class="pageShell" id="pageShell">
+      <canvas id="sceneCanvas" class="sceneCanvas" aria-hidden="true"></canvas>
+
+      <main class="pageFlow">
+        <section class="scrollSection scrollSection--hero" id="section-hero" data-scene-src="./stock/hero-jar.png">
+          <div class="heroStage">
+            <div class="heroMedia">
+              <img
+                class="heroPhoto"
+                src="./stock/hero-jar.png"
+                alt="Glass jar with wildflowers and blue sky — refracted through the navbar"
+              />
+              <div class="heroSampleZone" aria-hidden="true">
+                <span>Navbar samples here</span>
+              </div>
+            </div>
+            <div class="heroGuide">
+              <p class="heroGuideKicker">Built by Sif</p>
+              <h1>Liquid glass navigation</h1>
+              <p class="heroGuideLead">
+                The pill already sits over this photo. Scroll slowly — the sky, stems, and glass glints
+                should <strong>bend</strong> through the bar (real refraction), not frosted blur.
+              </p>
+              <ul class="heroLookFor">
+                <li>Caps warp the blue sky</li>
+                <li>Stems ripple across the center</li>
+                <li>Highlights shift at the rim</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section class="scrollSection scrollSection--bento" id="section-bento" data-scene-src="./stock/hero-forest.png">
+          <div class="bentoStage">
+            <img
+              class="bentoBg"
+              src="./stock/hero-forest.png"
+              alt=""
+            />
+            <div class="bentoScrim" aria-hidden="true"></div>
+            <header class="bentoHeader scenePainted">
+              <p class="bentoKicker">02 / Bento grid</p>
+              <h2>Same glass stack, tiled over the trail</h2>
+              <p class="bentoLead">Each tile is a live lens on this forest scene — drag-scroll slowly and watch trunks and mist bend through every card.</p>
+            </header>
+            <div class="bentoGrid" id="bentoGrid">
+              <article class="bentoTile bentoTile--tall" style="--tile-r: 32px">
+                <div class="bentoGlassHost" id="bentoGlassSnells" data-bento-id="bento-snells" data-bento-radius="32"></div>
+              </article>
+              <article class="bentoTile bentoTile--chroma" style="--tile-r: 28px">
+                <div class="bentoGlassHost" id="bentoGlassChroma" data-bento-id="bento-chroma" data-bento-radius="28"></div>
+              </article>
+              <article class="bentoTile bentoTile--spec" style="--tile-r: 28px">
+                <div class="bentoGlassHost" id="bentoGlassSpecular" data-bento-id="bento-specular" data-bento-radius="28"></div>
+              </article>
+              <article class="bentoTile bentoTile--tint" style="--tile-r: 28px">
+                <div class="bentoGlassHost" id="bentoGlassTint" data-bento-id="bento-tint" data-bento-radius="28"></div>
+              </article>
+              <article class="bentoTile bentoTile--caps" style="--tile-r: 28px">
+                <div class="bentoGlassHost" id="bentoGlassPortals" data-bento-id="bento-portals" data-bento-radius="28"></div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="scrollSection" id="section-work" data-scene-src="https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=1800&q=82">
+          <div class="sectionInner">
+            <div class="sectionCopy scenePainted">
+              <p class="sectionIndex">01 / Work</p>
+              <h2>Architecture</h2>
+              <p class="sectionDesc">Hard lines and concrete gradients give the lens something worth bending.</p>
+            </div>
+            <div class="sceneCard">
+              <img src="https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=1800&q=82" alt="Concrete architecture with dramatic shadows" />
+              <span class="sceneTag">Structure</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="scrollSection" id="section-studio" data-scene-src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1500&q=82">
+          <div class="sectionInner">
+            <div class="sectionCopy scenePainted">
+              <p class="sectionIndex">02 / Studio</p>
+              <h2>Interior light</h2>
+              <p class="sectionDesc">Soft interior tones show how the tint adapts without killing contrast.</p>
+            </div>
+            <div class="sceneCard">
+              <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1500&q=82" alt="Warm modern interior with natural light" />
+              <span class="sceneTag">Studio</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="scrollSection" id="section-about" data-scene-src="https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=1500&q=82">
+          <div class="sectionInner">
+            <div class="sectionCopy scenePainted">
+              <p class="sectionIndex">03 / About</p>
+              <h2>Night city</h2>
+              <p class="sectionDesc">Neon edges and skyline depth stress-test chroma at the rim.</p>
+            </div>
+            <div class="sceneCard">
+              <img src="https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=1500&q=82" alt="Moody night city skyline" />
+              <span class="sceneTag">Urban</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="scrollSection" id="section-contact" data-scene-src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1500&q=82">
+          <div class="sectionInner">
+            <div class="sectionCopy scenePainted">
+              <p class="sectionIndex">04 / Contact</p>
+              <h2>Organic texture</h2>
+              <p class="sectionDesc">Forest canopy detail keeps the refraction organic instead of mechanical.</p>
+            </div>
+            <div class="sceneCard">
+              <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1500&q=82" alt="Dense green forest canopy" />
+              <span class="sceneTag">Nature</span>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <div class="scrollHints" aria-hidden="true">
+        <p>Scroll with Lenis — watch the navbar and bento tiles refract the scene</p>
+      </div>
+
+      <footer class="demoFooter">
+        <p>Built by Sif · <a href="./gallery.html">View component gallery →</a></p>
+      </footer>
+      </div>
+    </div>
+
+    <nav class="glassNav" id="glassNav" aria-label="Main navigation">
+      <div class="navRefract" id="navRefract">
+        <canvas id="mirrorCanvas" aria-hidden="true"></canvas>
+      </div>
+      <div class="navTopcoat" aria-hidden="true"></div>
+      <div class="navContent">
+        <a class="navLogo" href="#section-hero">Sif</a>
+        <div class="navLinks">
+          <a href="#section-bento" data-scroll="section-bento">Bento</a>
+          <a href="#section-work" data-scroll="section-work">Work</a>
+          <a href="#section-studio" data-scroll="section-studio">Studio</a>
+          <a href="#section-about" data-scroll="section-about">About</a>
+          <a class="navCta" href="#section-contact" data-scroll="section-contact">Contact</a>
+        </div>
+      </div>
+    </nav>
+
+    <aside class="demoHud" id="demoHud">
+      <details class="debugPanel" id="debugPanel">
+        <summary>Debug tuning</summary>
+        <div class="debugControls">
+          <label class="debugCheck"><input type="checkbox" id="tintToggle" checked /> Dark tint</label>
+          <label class="debugCheck"><input type="checkbox" id="autoToggle" checked /> Auto tint</label>
+          <div class="debugPresets" id="presetButtons">
+            <button type="button" data-preset="subtle">Subtle</button>
+            <button type="button" data-preset="balanced">Balanced</button>
+            <button type="button" data-preset="strong">Strong</button>
+          </div>
+          <div class="debugReadout" id="lumReadout">lum: -- -> tint --</div>
+        </div>
+        <div class="debugMaps">
+          <figure>
+            <img id="dispPreview" alt="Displacement map" width="80" height="32" />
+            <figcaption>Displacement</figcaption>
+          </figure>
+          <figure>
+            <img id="specPreview" alt="Specular map" width="80" height="32" />
+            <figcaption>Specular</figcaption>
+          </figure>
+        </div>
+        <div class="debugSliders" id="debugSliders"></div>
+      </details>
+      <p class="demoHudNote"><code>Liquid glass</code> by Sif — SVG filter, Safari-safe.</p>
+    </aside>
+
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+    <script src="./generateLensMap.js?v=11"></script>
+    <script src="./generateSpecularMap.js?v=8"></script>
+    <script src="./autoTint.js?v=1"></script>
+    <script src="./glassPerf.js?v=4"></script>
+    <script src="./glassSvgFilter.js?v=10"></script>
+    <script src="./glassCore.js?v=9"></script>
+    <script src="./lenisScroll.js?v=4"></script>
+    <script src="./bentoGlass.js?v=3"></script>
+    <script src="./main.js?v=41"></script>
+  </body>
+</html>

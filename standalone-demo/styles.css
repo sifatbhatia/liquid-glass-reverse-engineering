@@ -1,0 +1,326 @@
+:root {
+  color-scheme: dark;
+  --nav-h: 64px;
+  --nav-w: min(92vw, 1080px);
+  --nav-r: 999px;
+  --tint-topcoat: 1;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+  background: #0a0a0a;
+  color: #fff;
+}
+
+/* ── Scrollable scene ── */
+.scrollRoot {
+  height: 100svh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+.sceneCanvas {
+  display: block;
+}
+
+.scrollHints {
+  position: sticky;
+  bottom: 24px;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+  margin-top: -80px;
+}
+
+.scrollHints p {
+  margin: 0;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.45);
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 13px;
+  backdrop-filter: blur(8px);
+}
+
+/* ── Fixed glass navbar ── */
+.glassNav {
+  position: fixed;
+  top: 18px;
+  left: 50%;
+  z-index: 100;
+  width: var(--nav-w);
+  height: var(--nav-h);
+  transform: translate3d(-50%, 0, 0);
+  border-radius: var(--nav-r);
+  overflow: hidden;
+  isolation: isolate;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.24);
+}
+
+.navRefract {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+  overflow: visible;
+  transform: translateZ(0);
+}
+
+.navRefract canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.navTopcoat {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: var(--tint-topcoat, 1);
+    background:
+    radial-gradient(ellipse 38% 85% at 0% 50%, rgba(0, 0, 0, 0.07) 0%, transparent 62%),
+    radial-gradient(ellipse 55% 90% at 100% 50%, rgba(0, 0, 0, 0.22) 0%, transparent 72%),
+    radial-gradient(ellipse 120% 70% at 50% 0%, rgba(255, 255, 255, 0.03) 0%, transparent 58%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.02) 0%, transparent 20%, transparent 80%, rgba(0, 0, 0, 0.05) 100%);
+  transition: opacity 160ms ease;
+}
+
+.navContent {
+  position: absolute;
+  z-index: 3;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 clamp(20px, 4vw, 36px);
+  pointer-events: none;
+  color: #fff;
+}
+
+.navContent a {
+  pointer-events: auto;
+  color: inherit;
+  text-decoration: none;
+}
+
+.navLogo {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.35);
+}
+
+.navLinks {
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 3vw, 32px);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.navLinks a {
+  opacity: 0.88;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
+  transition: opacity 150ms ease;
+}
+
+.navLinks a:hover {
+  opacity: 1;
+}
+
+.navCta {
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+  border: 0;
+}
+
+/* In-flow glass (bento tiles) — override fixed navbar shell */
+.glassNav.bentoGlassHost {
+  position: absolute;
+  inset: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: none;
+  z-index: 1;
+  box-shadow: none;
+  border-radius: var(--tile-r, 28px);
+  clip-path: inset(0 round var(--tile-r, 28px));
+}
+
+.glassNav.bentoGlassHost .navContent {
+  align-items: flex-end;
+  justify-content: stretch;
+  padding: 0;
+}
+
+/* ── HUD ── */
+.demoHud {
+  position: fixed;
+  left: 18px;
+  bottom: 18px;
+  z-index: 110;
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 12px;
+  line-height: 1.4;
+  pointer-events: none;
+  max-width: min(92vw, 320px);
+}
+
+.demoHud code {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.demoHudNote {
+  margin: 8px 0 0;
+}
+
+.debugPanel {
+  pointer-events: auto;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.debugPanel summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.85);
+  user-select: none;
+}
+
+.debugMaps {
+  display: flex;
+  gap: 12px;
+  margin: 10px 0 8px;
+}
+
+.debugMaps figure {
+  margin: 0;
+}
+
+.debugMaps img {
+  display: block;
+  width: 80px;
+  height: 32px;
+  object-fit: contain;
+  border-radius: 6px;
+  background: #222;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  image-rendering: pixelated;
+}
+
+.debugMaps figcaption {
+  margin-top: 4px;
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.debugSliders {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.debugRow {
+  display: grid;
+  grid-template-columns: 108px 1fr 40px;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+}
+
+.debugRow span {
+  color: rgba(255, 255, 255, 0.7);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+.debugRow input[type="range"] {
+  width: 100%;
+  margin: 0;
+  accent-color: rgba(255, 255, 255, 0.75);
+}
+
+.debugRow output {
+  text-align: right;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.debugRow.is-hidden {
+  display: none;
+}
+
+.debugControls {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.debugCheck {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.78);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  cursor: pointer;
+}
+
+.debugCheck input {
+  accent-color: rgba(255, 255, 255, 0.85);
+  cursor: pointer;
+}
+
+.debugPresets {
+  display: flex;
+  gap: 6px;
+}
+
+.debugPresets button {
+  flex: 1;
+  padding: 5px 8px;
+  border-radius: 7px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 11px;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 120ms ease;
+}
+
+.debugPresets button:hover {
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.debugReadout {
+  font-size: 10px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .navLinks a {
+    transition: none;
+  }
+}
